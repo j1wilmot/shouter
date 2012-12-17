@@ -1,5 +1,4 @@
 class FollowingRelationship < ActiveRecord::Base
-  belongs_to :follower
-  belongs_to :followed_user
-  # attr_accessible :title, :body
+  belongs_to :follower, class_name: 'User'
+  belongs_to :followed_user, class_name: 'User'
 end
