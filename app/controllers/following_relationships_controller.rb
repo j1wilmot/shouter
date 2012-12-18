@@ -1,8 +1,13 @@
-class FollowingRelationships < ApplicationController
+class FollowingRelationshipsController < ApplicationController
   def create
-    user = User.find(params[:id])
-    current_user.followed_users << user
+    user = find_user
+    current_user.follow user
     redirect_to user
   end
 
+  private
+
+  def find_user
+    User.find(params[:id])
+  end
 end

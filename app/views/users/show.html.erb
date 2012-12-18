@@ -1,3 +1,5 @@
 <%= @user.email %>
-<%= button_to "Follow", follow_user_path(@user)  %>
-<%= render @shouts %>
+<% if visitor.can_follow?(@user)%>
+  <%= button_to "Follow", follow_user_path(@user)  %>
+<% end %>
+<%= render @timeline %>

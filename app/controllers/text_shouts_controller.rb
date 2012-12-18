@@ -9,7 +9,9 @@ class TextShoutsController < ApplicationController
   private
 
   def build_shout
-    current_user.shouts.new(content: build_content)
+    current_user.build_shout(build_content).tap do |shout|
+      shout.public = params[:private] != "1"
+    end
   end
 
   def build_content
