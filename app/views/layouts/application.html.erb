@@ -17,6 +17,10 @@
 <% flash.each do |key, value| -%>
   <div class="flash <%= key %>"><%= value %></div>
 <% end -%>
+<%= form_for(:search, url:search_path, method: :get) do |form| %>
+  <%= form.text_field :q, placeholder: "Search here" %>
+  <%= form.submit "Search" %>
+<% end %>
 <%= yield %>
 
 </body>

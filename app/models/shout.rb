@@ -8,4 +8,9 @@ class Shout < ActiveRecord::Base
   def self.current
     order("created_at DESC")
   end
+
+  def self.search params
+    indices = SearchIndex.search(params)
+    where(id: indices.select(:shout_id)) 
+  end
 end
